@@ -23,6 +23,6 @@ ruleset hello_world {
     	input = event:attr("input").defaultsTo(ent:input,"Using default input");
     }
     send_directive("say") with
-      something = "#{input};
+      something = "#{input}";
   }
 }
