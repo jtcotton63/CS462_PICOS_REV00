@@ -4,7 +4,6 @@ ruleset hello_world {
     logging on
     sharing on
     provides hello
- 
   }
   global {
     hello = function(obj) {
@@ -18,5 +17,12 @@ ruleset hello_world {
     send_directive("say") with
       something = "Hello World";
   }
- 
+  rule message {
+    select when echo message
+    pre {
+    	input = event:attr("input").defaultsTo(ent:input,"Using default input");
+    }
+    send_directive("say") with
+      something = "#{input};
+  }
 }
