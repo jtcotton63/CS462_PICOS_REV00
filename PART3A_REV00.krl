@@ -14,7 +14,7 @@ ruleset trip_store {
 	always {
 		set ent:all_trips{timestamp} mileage.klog(" Here is the mileage");
 		log("All trips: ");
-		log(ent:long_trips);
+		log(ent:all_trips);
 	}
   }
   rule collect_long_trips {
