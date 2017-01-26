@@ -12,6 +12,8 @@ ruleset trip_store {
 	}		
 	always {
 		set ent:all_trips{timestamp} mileage;
+		log("All trips: ");
+		log(ent:long_trips);
 	}
   }
   rule collect_long_trips {
@@ -23,13 +25,15 @@ ruleset trip_store {
 	always {
 		set ent:longest_trip mileage;
 		set ent:long_trips{timestamp} mileage;
+		log("Long trips: ");
+		log(ent:long_trips);
 	}
 
   }
   rule clear_trips {
 	select when car trip_reset
 	always {
-		log("event clear_trips seelcted");
+		log("event clear_trips selected");
 		clear ent:all_trips;
 		clear ent:long_trips;
 	}
