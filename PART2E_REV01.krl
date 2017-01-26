@@ -27,6 +27,7 @@ ruleset hello_world {
 		log("If statement evaluated to true; new trip has has mileage #{mileage}");
     }
     fired {
+	  set ent:longest_trip mileage;
 	  raise explicit event found_long_trip attributes event:attrs();
 	  log("Raised found_long_trip event with mileage #{mileage}");
 	  log("New trip is of length " + mileage );

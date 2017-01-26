@@ -23,7 +23,6 @@ ruleset trip_store {
 	  timestamp = time:now();
 	}		
 	always {
-		set ent:longest_trip mileage;
 		set ent:long_trips{timestamp} mileage;
 		log("Long trips: ");
 		log(ent:long_trips);
