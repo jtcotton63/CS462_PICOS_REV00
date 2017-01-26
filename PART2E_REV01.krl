@@ -22,7 +22,7 @@ ruleset hello_world {
     pre {
       mileage = event:attr("mileage").defaultsTo(0).klog("explicit trip_processed event selected; mileage is ");
     }
-    if(mileage > ent:long_trip) then 
+    if(mileage > ent:longest_trip) then 
     {
 		log("If statement evaluated to true; new trip has has mileage #{mileage}");
     }
@@ -30,10 +30,11 @@ ruleset hello_world {
 	  raise explicit event found_long_trip attributes event:attrs();
 	  log("Raised found_long_trip event with mileage #{mileage}");
 	  log("New trip is of length " + mileage );
-      log("Record holding trip is of length " + ent:long_trip);
+      log("Record holding trip is of length " + ent:longest_trip);
     } else {
+      log("Did not overwrite longest trip" );
       log("New trip is of length " + mileage );
-      log("Record holding trip is of length " + ent:long_trip);
+      log("Record holding trip is of length " + ent:longest_trip);
 	}
   }
 }
