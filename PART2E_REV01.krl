@@ -14,6 +14,8 @@ ruleset hello_world {
         trip = "#{mileage}";
     }
     always {
+	  log("Attributes:");
+	  log(event:attrs());
       raise explicit event trip_processed attributes event:attrs();
     }    
   }

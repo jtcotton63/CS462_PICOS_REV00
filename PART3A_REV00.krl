@@ -8,10 +8,11 @@ ruleset trip_store {
 	select when explicit trip_processed
 	pre {
       mileage = event:attr("mileage").defaultsTo(0).klog("explicit collect_trips event selected; mileage is ");
+	  a = event:attrs().klog(" Here they are: ");
 	  timestamp = time:now();
 	}		
 	always {
-		set ent:all_trips{timestamp} mileage;
+		set ent:all_trips{timestamp} mileage.klog(" Here is the mileage");
 		log("All trips: ");
 		log(ent:long_trips);
 	}
