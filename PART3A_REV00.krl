@@ -10,10 +10,17 @@ ruleset trip_store {
   		ent:all_trips;
   	};
   	long_trips = function() {
-  		ent:long_trips_2;
+  		ent:long_trips;
   	};
   	short_trips = function() {
-		ent:long_trips_2;
+		all_trips = trips();
+		short_keys = (ent:all_trips.keys()).difference((ent:long_trips));
+		short_trips = ent:all_trips.filter(function(k,v) {
+			short_keys.any(function(x) {
+				x eq k
+			});
+		});
+		short_trips;
   	};
   }
   rule collect_trips {
