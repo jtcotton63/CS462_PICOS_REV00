@@ -3,7 +3,19 @@ ruleset trip_store {
     name "trip_store"
     logging on
     sharing on
+	provides trips, long_trips, short_trips
   }
+  global {
+  	trips = function() {
+  		ent:all_trips;
+  	};
+  	long_trips = function() {
+  		ent:long_trips_2;
+  	};
+  	short_trips = function() {
+		ent:long_trips_2;
+  	};
+  }
   rule collect_trips {
 	select when explicit trip_processed
 	pre {
@@ -25,6 +37,7 @@ ruleset trip_store {
 	}		
 	always {
 		set ent:long_trips{timestamp} mileage;
+		set ent:long_trips_2 mileage;
 		log("Long trips: ");
 		log(ent:long_trips);
 	}
