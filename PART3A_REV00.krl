@@ -1,6 +1,7 @@
 ruleset trip_store {
   meta {
     name "trip_store"
+	author "Joseph Cotton"
     logging on
     sharing on
 	provides trips, long_trips, short_trips
